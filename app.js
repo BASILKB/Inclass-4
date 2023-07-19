@@ -1,24 +1,24 @@
 const express = require('express');
 const app = express();
-const port = 3000; // You can change this to any desired port number
+const port = 3000; 
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Connection URL for MongoDB (replace <db_uri> with your MongoDB connection string)
+// Connection URL for MongoDB 
 const url = 'mongodb://localhost:27017';
 const dbName = 'Newsletter';
 
 // Serve the static files from the "public" directory
 app.use(express.static('public'));
 
-// Define the route to show the sign-up form
+// Defining the route to show the sign-up form
 app.get('/', (req, res) => {
     res.render('signup.ejs');
 });
 
-// Define the route to handle form submissions and store data in MongoDB
+// Defining the route to handle form submissions and store data in MongoDB
 app.post('/signup', async (req, res) => {
     const formData = req.body;
     console.log(formData)
@@ -40,12 +40,12 @@ app.post('/signup', async (req, res) => {
     }
 });
 
-// Define the route to show the thank you page
+// Defining the route to show the thank you page
 app.get('/thankyou', (req, res) => {
     res.send('<h1>Thank You for Signing Up!</h1>');
 });
 
-// Start the server
+// Starting the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
